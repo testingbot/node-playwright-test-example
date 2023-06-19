@@ -1,11 +1,11 @@
-const { test, expect } = require('@playwright/test')
+import { test, expect } from './baseTest'
 
-test('Sample TestingBot test', async ({ page }, testInfo) => {
-	try {
-		await page.evaluate(_ => {}, `testingbot_executor: ${JSON.stringify({action: 'setSessionName', arguments: { name: testInfo.project.name }})}`)
-		await page.goto('https://testingbot.com/',{ waitUntil: 'networkidle' })
-		await page.evaluate(_ => {}, `testingbot_executor: ${JSON.stringify({action: 'setSessionStatus', arguments: { passed: true }})}`)
-	} catch (e) {
-		await page.evaluate(_ => {}, `testingbot_executor: ${JSON.stringify({action: 'setSessionStatus', arguments: { passed: false, reason: e.message }})}`)
-	}
+test('Sample TestingBot test', async ({ page }) => {
+	await page.goto('https://playwright.dev/');
+
+	// Click the get started link.
+	await page.getByRole('link', { name: 'Get started' }).click();
+
+	// Expects the URL to contain intro.
+	await expect(page).toHaveURL(/.*intro/);
 })

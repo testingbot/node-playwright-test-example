@@ -1,7 +1,7 @@
 /* eslint-disable notice/notice */
 
 import { defineConfig } from '@playwright/test'
-import { getCdpEndpoint } from './testingbot.config'
+import { getConnectWsEndpoint } from './testingbot.config'
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -39,7 +39,7 @@ export default defineConfig({
       name: 'playwright-chrome@latest:Windows 10',
       use: {
         connectOptions: { 
-          wsEndpoint: getCdpEndpoint({
+          wsEndpoint: getConnectWsEndpoint({
             browserName: 'chrome',
             browserVersion: 'latest',
             platform: 'WIN10'
@@ -51,7 +51,7 @@ export default defineConfig({
       name: 'playwright-webkit@latest:macOS Ventura',
       use: {
         connectOptions: { 
-          wsEndpoint: getCdpEndpoint({
+          wsEndpoint: getConnectWsEndpoint({
             browserName: 'safari',
             platform: 'VENTURA'
           }) 
@@ -62,7 +62,7 @@ export default defineConfig({
       name: 'playwright-firefox@latest:Linux',
       use: {
         connectOptions: { 
-          wsEndpoint: getCdpEndpoint({
+          wsEndpoint: getConnectWsEndpoint({
             browserName: 'firefox',
             browserVersion: 'latest',
             platform: 'LINUX'
