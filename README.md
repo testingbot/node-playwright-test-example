@@ -19,6 +19,6 @@ You can see the results of your tests in the [TestingBot Dashboard](https://test
 
 
 ### Resources
-##### [TestingBot Documentation](https://testingbot.com/support/playwright/playwright-test.html)
+##### [TestingBot Documentation](https://testingbot.com/support/web-automate/playwright/playwright-test)
 
 ##### [Playwright Documentation](https://playwright.dev/)
