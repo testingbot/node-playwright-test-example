@@ -1,7 +1,7 @@
 {
   "name": "playwright-example",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.1",
+  "description": "An example Playwright Test Project to run on TestingBot",
   "main": "index.js",
   "scripts": {
     "sample-test":"npx playwright test tests/sample.spec.ts"
@@ -9,6 +9,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.35.0"
+    "@playwright/test": "^1.56.1"
   }
 }
