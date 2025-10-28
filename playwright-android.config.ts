@@ -1,17 +1,17 @@
 /* eslint-disable notice/notice */
 
 import { defineConfig } from '@playwright/test'
-import { getConnectWsEndpoint } from './testingbot.config'
 
 /**
- * See https://playwright.dev/docs/test-configuration.
+ * Android-specific Playwright configuration
+ * This config is used for running Android mobile tests via TestingBot
  */
 export default defineConfig({
 
   testDir: './tests',
 
-  /* Exclude Android test files from desktop test runs */
-  testIgnore: '**/android*.spec.ts',
+  /* Only run Android test files */
+  testMatch: '**/android*.spec.ts',
 
   /* Maximum time one test can run for. */
   timeout: process.env.TEST_TIMEOUT ? parseInt(process.env.TEST_TIMEOUT) : 30 * 1000,
@@ -39,9 +39,6 @@ export default defineConfig({
 
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    /* Base URL to use in actions like `await page.goto('/')`. */
-    // baseURL: process.env.BASE_URL || 'http://localhost:3000',
-
     /* Action timeout */
     actionTimeout: 10 * 1000,
 
@@ -49,41 +46,10 @@ export default defineConfig({
     navigationTimeout: 30 * 1000,
   },
 
+  /* Single default project for Android tests - the actual connection is handled by the custom fixture */
   projects: [
     {
-      name: 'playwright-chrome@latest:Windows 10',
-      use: {
-        connectOptions: { 
-          wsEndpoint: getConnectWsEndpoint({
-            browserName: 'chrome',
-            browserVersion: 'latest',
-            platform: 'WIN10'
-          }) 
-        }
-      },
-    },
-    {
-      name: 'playwright-webkit@latest:macOS Sequoia',
-      use: {
-        connectOptions: { 
-          wsEndpoint: getConnectWsEndpoint({
-            browserName: 'safari',
-            platform: 'SEQUOIA'
-          }) 
-        }
-      },
-    },
-    {
-      name: 'playwright-firefox@latest:Linux',
-      use: {
-        connectOptions: { 
-          wsEndpoint: getConnectWsEndpoint({
-            browserName: 'firefox',
-            browserVersion: 'latest',
-            platform: 'LINUX'
-          }) 
-        }
-      }
+      name: 'android'
     }
   ]
 })

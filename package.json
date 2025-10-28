@@ -4,7 +4,8 @@
   "description": "An example Playwright Test Project to run on TestingBot",
   "main": "index.js",
   "scripts": {
-    "sample-test":"npx playwright test tests/sample.spec.ts"
+    "sample-test":"npx playwright test tests/sample.spec.ts",
+    "android-test":"npx playwright test --config=playwright-android.config.ts tests/android.spec.ts"
   },
   "author": "",
   "license": "ISC",
